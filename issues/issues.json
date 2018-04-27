@@ -1,0 +1,66 @@
+[
+  {
+    "Id": 2193,
+    "Title": "Add PSVariable reference for event source in PSEvent object"
+  },
+  {
+    "Id": 2195,
+    "Title": "Implement automatic event unhooking when variables are overwritten or go out of scope"
+  },
+  {
+    "Id": 2197,
+    "Title": "piping a PSVariable into connect- or disconnect-eventlistener is broken"
+  },
+  {
+    "Id": 2198,
+    "Title": "implement an optional visual indicator to show \"events waiting\""
+  },
+  {
+    "Id": 2200,
+    "Title": "BindVariableToEvent method assumed PSVariable .Value was always a PSObject"
+  },
+  {
+    "Id": 2201,
+    "Title": "EventName parameter is erroneously set to ValueFromPipeline = true"
+  },
+  {
+    "Id": 2205,
+    "Title": "allow binding to events with non-void delegates"
+  },
+  {
+    "Id": 2807,
+    "Title": "add New-Event cmdlet for custom events"
+  },
+  {
+    "Id": 2842,
+    "Title": "add some alert/notification cmdlets"
+  },
+  {
+    "Id": 3192,
+    "Title": "reshape API to fit \"Record\" metaphor"
+  },
+  {
+    "Id": 3533,
+    "Title": "get-event window message pumping"
+  },
+  {
+    "Id": 4323,
+    "Title": "Unable to bind to EventHandler<T> events"
+  },
+  {
+    "Id": 4677,
+    "Title": "add -noflush to read-event (previously get-event) cmdlet"
+  },
+  {
+    "Id": 4856,
+    "Title": "sometimes get-event (now read-event) -wait returns immediately with no events"
+  },
+  {
+    "Id": 5087,
+    "Title": "implement multiple named queues support"
+  },
+  {
+    "Id": 5088,
+    "Title": "rename get-event to read-event, shorten (dis)connect-eventlistener to (dis)connect-event"
+  }
+]

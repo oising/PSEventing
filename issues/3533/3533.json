@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "good to hear it - I just noticed your reply now. glad I could help!",
+    "ClosedDate": "2007-12-19T08:47:11.04-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "From dicussions:\n \nDoes \"get-event -wait\" pump windows messages? \n \nI'm finding that certain com objects aren't generating events as I'd expect and I'm guessing that this is because the thread isnt having it's message pump serviced during the call to get-event. \n \nQuick update - I just looked at the get-event code for v1.0 and if you use the -Wait switch, message pumping *will* happen, but the thread calling get-event will be blocked. If this thread has been yanked into an STA for your com object, this might be the trouble.\n \nI'll compile up a 1.1 Beta and place it in the downloads for you to try out. Please let me know how you get on.",
+    "LastUpdatedDate": "2013-05-15T23:08:26.85-07:00",
+    "PlannedForRelease": "PSEventing 1.1 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "PSEventing",
+    "ReportedDate": "2007-09-30T13:37:20.463-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "get-event window message pumping",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 3533
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I tried using the \"-wait\" parameter with PSEventing verison 1.0 and that didn't work, but I guess you were expecting that. \r\n\r\nGood news however -  your v1.1 beta appears to handle the events perfectly as far as I can see.  \r\n\r\nNice work ! \r\n\r\nthanks & regards, \r\nMichael",
+      "PostedDate": "2007-11-05T10:39:47.58-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2007-12-19T08:47:11.04-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-13T16:36:58.653-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-15T23:08:26.85-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

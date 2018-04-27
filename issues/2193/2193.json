@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2007-07-14T21:33:42.703-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Currently the Source property is a string, which is useful up to a certain point. For near-parity .net behaviour, there should be a reference to the source object, a la \"sender\" in each event object.",
+    "LastUpdatedDate": "2013-05-15T23:08:27.713-07:00",
+    "PlannedForRelease": "PSEventing 1.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "PSEventing",
+    "ReportedDate": "2007-05-09T17:38:41.383-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Add PSVariable reference for event source in PSEvent object",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 2193
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

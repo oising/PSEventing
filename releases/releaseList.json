@@ -1,0 +1,174 @@
+[
+  {
+    "Id": "0",
+    "Name": "PSEventing 1.1 Beta",
+    "DevelopmentStatus": "Beta",
+    "Description": "!! changes in this release\n\n* changes in get-event internals to better support COM/sendmessage pumping when trying to sink COM generated events\n\nPlease provide feedback both good and bad in the issue tracker! This is a debug build, so it will generate verbose messages to an attached debug listener, like SysInternal's [url:DebugView|http://www.microsoft.com/technet/sysinternals/utilities/debugview.mspx] so please attach debug logs to any posts. Thanks!",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2010-07-01T10:35:33.817-07:00",
+    "Files": [
+      {
+        "Id": "ad7a8c62-2877-4f02-b818-70e3c5e3c4a0",
+        "FileName": "PSEventing-1.1.2829.27742-beta.zip",
+        "Url": "./0/ad7a8c62-2877-4f02-b818-70e3c5e3c4a0",
+        "Type": "Application",
+        "UploadDate": "2007-09-30T13:35:57.37-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "1",
+    "Name": "PSEventing 1.0 (Debug Build)",
+    "DevelopmentStatus": "None",
+    "Description": "Special instrumented build; will log extensively to an attached debug listener, such as SysInternal's excellent [url:DebugView|http://www.microsoft.com/technet/sysinternals/Miscellaneous/DebugView.mspx]\n\nPost DebugView logs to the Issue Tracker, thanks!",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2007-07-31T07:51:05.987-07:00",
+    "Files": [
+      {
+        "Id": "7e2f15fe-c6c9-4419-8f86-15a3ae1dc29b",
+        "FileName": "Nivot.PowerShell.Eventing-1.0.2768.17386-DEBUG.zip",
+        "Url": "./1/7e2f15fe-c6c9-4419-8f86-15a3ae1dc29b",
+        "Type": "Application",
+        "UploadDate": "2007-07-31T07:50:38.723-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "2",
+    "Name": "PSEventing 1.0",
+    "DevelopmentStatus": "Stable",
+    "Description": "Changes in this release:\n\n\n\n* A PSEvent object's _Source_ property now contains the PSVariable wrapping the original object which generated the event. This resolves scoping issues with 0.5 whereby it wasn't always possible to reach the original sender by variable name (using _get-variable_).\n* New-Event cmdlet added for inserting user-generated \"events\" into the queue. This cmdlet allows attaching an abitrary object payload which is available in the PSEvent's Args.Data property.\n* All event handlers are now *AUTOMATICALLY* unhooked if the original PSVariable goes out of scope! No more phantom events continually generated if you forget to use the explicit \"Disconnect-EventListener\" and lose your reference. Simply null out a variable or let it disappear into the scopeless void!\n* and finally, some bugfixes, as listed below...\n\nHave fun, and I've uploaded the source for those interesting in lightweight codegen, reflection and good old fashioned back-against-the-wall hackery ;-)\n\nJust unzip the archive into a permanent location and run the included install.ps1 script.\n\n- Oisin / x0n",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2010-07-01T10:36:46.347-07:00",
+    "Files": [
+      {
+        "Id": "ac227955-123d-4664-9b16-96f77a54dcad",
+        "FileName": "Nivot.PowerShell.Eventing-1.0.2760.36525.zip",
+        "Url": "./2/ac227955-123d-4664-9b16-96f77a54dcad",
+        "Type": "Application",
+        "UploadDate": "2007-07-23T18:20:22.817-07:00"
+      },
+      {
+        "Id": "420b6bb2-b550-40b6-8d4b-a52e83a72a27",
+        "FileName": "filesystemwatcher.ps1",
+        "Url": "./2/420b6bb2-b550-40b6-8d4b-a52e83a72a27",
+        "Type": "Example",
+        "UploadDate": "2007-07-15T19:10:05.84-07:00"
+      },
+      {
+        "Id": "95d1b943-ec52-4c7b-85fb-a3a52e70816c",
+        "FileName": "sqlbackup.ps1",
+        "Url": "./2/95d1b943-ec52-4c7b-85fb-a3a52e70816c",
+        "Type": "Example",
+        "UploadDate": "2007-07-15T19:10:05.87-07:00"
+      },
+      {
+        "Id": "9a20bcf2-c18c-4e13-a91f-dbd9f937a6f0",
+        "FileName": "eventhandler.ps1",
+        "Url": "./2/9a20bcf2-c18c-4e13-a91f-dbd9f937a6f0",
+        "Type": "Example",
+        "UploadDate": "2007-07-23T11:20:46.84-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "3",
+    "Name": "PSEventing 0.5 beta",
+    "DevelopmentStatus": "Beta",
+    "Description": "First beta release to public.\n\nDownload the attached zip file, extract it to its own folder and run the included install.ps1 script. There aren't many example scripts here, but I'll be adding more over the coming days. See the home page for an example of how to use it with a FileSystemWatcher. \n\nNote: You must be a local administrator to install the snap-in, like any other snap-in installation requires. Also, don't forget to run Add-PSSnapIn PSEventing to load it into PowerShell before you go tinkering. ;)",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2010-07-01T10:36:17.35-07:00",
+    "Files": [
+      {
+        "Id": "fb694e9d-a640-4816-b8d0-ccbe1e707059",
+        "FileName": "Nivot.PowerShell.Eventing-0.5.zip",
+        "Url": "./3/fb694e9d-a640-4816-b8d0-ccbe1e707059",
+        "Type": "Application",
+        "UploadDate": "2007-05-10T06:29:24.97-07:00"
+      },
+      {
+        "Id": "b3cd4c25-c21d-4e3c-a310-168bac81a9fc",
+        "FileName": "sqlbackup.ps1.txt",
+        "Url": "./3/b3cd4c25-c21d-4e3c-a310-168bac81a9fc",
+        "Type": "Example",
+        "UploadDate": "2007-05-10T05:58:58.12-07:00"
+      },
+      {
+        "Id": "8b9138fa-5072-48cd-98ec-8e19cf011cae",
+        "FileName": "eventhandler.ps1",
+        "Url": "./3/8b9138fa-5072-48cd-98ec-8e19cf011cae",
+        "Type": "Example",
+        "UploadDate": "2007-05-16T11:33:16.357-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "4",
+    "Name": "PSEventing Plus 1.0",
+    "DevelopmentStatus": "Stable",
+    "Description": "!! About\nEventing extensions for PowerShell 2.0 Console Host. This module integrates with PowerShell 2.0 Eventing infrastructure. HotKey events can have a scriptblock action, or can put events in the event queue just like the OOTB eventing cmdlets.\n!! Installation\n* Download zip, right click, properties, unblock.\n* Extract into ~\\documents\\windowspowershell\\modules\\pseventingplus\\ \n!! What's New?\n!!! Cmdlet(s)\n* Register-HotKeyEvent\n{{\nNAME\n    Register-HotKeyEvent\n\nSYNTAX\n    Register-HotKeyEvent [-SourceIdentifier] <string> [-Global] [-PassThru] [[-Action] <scriptblock>] [-MessageData <psobject>] [-SupportEvent] [-Forward] [<CommonParameters>]\n}}\n!!! Examples\n{{\nimport-module pseventingplus\n\n# clear screen in response to ctrl+L, unix style\nregister-hotkeyevent \"ctrl+L\" -action { cls; write-host -nonewline (prompt) }\n\n# kill all jobs\nregister-hotkeyevent \"ctrl+shift+j\" -action { get-job | stop-job -verbose }\n\n# put events in the queue for alt+f, no action and hide the event registration\nregister-hotkeyevent \"alt+f\" -supportevent\n\n# respond to hotkeys even if powershell window is not focused ;-)\nregister-hotkeyevent \"ctrl+alt+h\" -action { start-process -verb runas notepad \"$env:windir\\system32\\drivers\\etc\\hosts\" }  -global\n}}\n!!! Known Issues\n* ~~Hot key registrations only work in the last console to load this module.~~ fixed\n* ~~Concurrent consoles will be supported in 1.1~~ fixed\n* Global hotkeys will not work if they were registered in an elevated instance of PowerShell and you have UAC enabled. Use an unelevated instance of PowerShell.\n\n!!! Reporting Problems\n\nIf you have any problems, e.g. the hotkeys don't work at all then you may be running into a limitation for global hooks. Windows only allows a maximum of 32 distinct DLLs to hook into the global hooks chain. Download the specially annotated debug build and run Microsoft [url:DbgView|http://technet.microsoft.com/en-us/sysinternals/bb896647] to view verbose debugging output. Start DbgView before you load the module and register any hotkeys. Post the output to the issue tracker along with any other comments and I'll do my best to get back to you. \n\nEnjoy.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2011-11-09T12:54:52.62-08:00",
+    "Files": [
+      {
+        "Id": "166a7776-03b3-4c93-bc44-4059a898317c",
+        "FileName": "PSEventingPlus-1.0.0.1.zip",
+        "Url": "./4/166a7776-03b3-4c93-bc44-4059a898317c",
+        "Type": "Application",
+        "UploadDate": "2011-05-19T12:34:02.67-07:00"
+      },
+      {
+        "Id": "e03775f7-221a-4101-8824-6bd0beaf336c",
+        "FileName": "PSEventingPlus.Debug.zip",
+        "Url": "./4/e03775f7-221a-4101-8824-6bd0beaf336c",
+        "Type": "Application",
+        "UploadDate": "2011-11-09T12:50:15.43-08:00"
+      }
+    ]
+  },
+  {
+    "Id": "5",
+    "Name": "PSEventing 1.1",
+    "DevelopmentStatus": "Stable",
+    "Description": "If you are using PowerShell 2.0, you should use the built-in eventing instead. While this release works perfectly on v2, this is only for backwards compatibility with PowerShell 1.0 PSEventing scripts.\n\nIf you want to use key handling events (Hot keys) in PowerShell 2.0, see the latest release on PSEventing Plus on this website.\n\n_Notes_\n\n* If you download the ZIP package, you must run the install script as an administrator (elevated shell on 2008/vista/win7).\n* After installing as admin, you can use the PSEventing snapin as a normal / unpriveledged user\n\n _New Features_\n\n* Multiple named queue support and default queue with -QueueName parameter\n* Better COM support, window message pumping etc.\n* NoFlush / Peek parameter support for queue reading\n* Get-EventQueue command added for viewing queues and their message counts.\n\n_Changes_\n\n* Get-Event -> Read-Event\n* Connect-EventListener -> Connect-Event\n* Disconnect-EventListener -> Disconnect-Event\n\nsee [url:foreground / background swappable downloads in powershell|http://www.nivot.org/2007/12/05/ForegroundBackgroundSwappableDownloadsInPowerShell.aspx] for an advanced example.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2011-05-19T11:27:58.273-07:00",
+    "Files": [
+      {
+        "Id": "5b514ddf-3e8a-4218-9d5c-c0d561261aeb",
+        "FileName": "PSEventing 1.1 Setup.msi",
+        "Url": "./5/5b514ddf-3e8a-4218-9d5c-c0d561261aeb",
+        "Type": "Application",
+        "UploadDate": "2008-06-04T10:41:07.63-07:00"
+      },
+      {
+        "Id": "36508343-fc0b-49d6-9cd7-10292a82a8b9",
+        "FileName": "filesystemwatcher.ps1",
+        "Url": "./5/36508343-fc0b-49d6-9cd7-10292a82a8b9",
+        "Type": "Example",
+        "UploadDate": "2008-06-04T11:58:34.297-07:00"
+      },
+      {
+        "Id": "2770548a-e883-43a5-b897-1cd433d41fa9",
+        "FileName": "sqlbackup.ps1",
+        "Url": "./5/2770548a-e883-43a5-b897-1cd433d41fa9",
+        "Type": "Example",
+        "UploadDate": "2008-06-04T11:58:34.42-07:00"
+      },
+      {
+        "Id": "915811ef-4c6d-4bd4-9a09-c09747b55a31",
+        "FileName": "eventhandler.ps1",
+        "Url": "./5/915811ef-4c6d-4bd4-9a09-c09747b55a31",
+        "Type": "Example",
+        "UploadDate": "2008-06-04T11:58:34.453-07:00"
+      },
+      {
+        "Id": "834105de-3ef8-495e-9e9b-107694b2225d",
+        "FileName": "PSEventing 1.1 - DLLs and Help.zip",
+        "Url": "./5/834105de-3ef8-495e-9e9b-107694b2225d",
+        "Type": "Application",
+        "UploadDate": "2008-06-05T10:40:49.043-07:00"
+      }
+    ]
+  }
+]

@@ -1,0 +1,39 @@
+# filesystemwatcher
+
+Add-PSSnapin pseventing
+
+$fsw = new-object system.io.filesystemwatcher
+$fsw.Path = "c:\temp"
+$fsw.EnableRaisingEvents = $true
+connect-eventlistener fsw changed,deleted -verbose
+
+"watching c:\temp"
+"entering loop..."
+
+$done = $false;
+while ($events = (get-event -wait)) {
+
+	# read-event always returns a collection
+	foreach ($event in $events) {	    
+		switch ($event.name) {
+		    "ctrlc" {
+		        "cancelling..."
+		        $done = $true
+		    }
+		    
+			"changed" {
+			    $event
+			    #$done = $true
+			}
+			
+			"deleted" {
+				$event
+			}
+		}
+	}
+	
+	if ($done -eq $true) {
+		break
+	}
+}
+

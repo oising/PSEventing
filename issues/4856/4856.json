@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2008-06-04T10:34:37.627-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "sometimes read-event -wait returns immediately with no events - seems to be related to using ctrl+c to break out; a subsequent call immediately returns, but additional calls behave as normal. Probably not resetting my exit flag. doh.",
+    "LastUpdatedDate": "2017-12-09T01:32:23.67-08:00",
+    "PlannedForRelease": "PSEventing 1.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "PSEventing",
+    "ReportedDate": "2007-12-19T08:45:13.663-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "sometimes get-event (now read-event) -wait returns immediately with no events",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 4856
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "conditions for repro:\r\n\r\nps> start-keyhandler -capturectrl\r\nps> read-event -wait\r\n... hit ctrlc - returns ctrlc event ...\r\nps> read-event -wait\r\n(returns immediately with no event!)\r\nps> read-event -wait\r\n(waits correctly)\r\n",
+      "PostedDate": "2008-06-04T10:33:18.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 11570.",
+      "PostedDate": "2008-06-04T10:34:37.627-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-13T16:36:58.007-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-15T23:08:26.373-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-12-09T01:32:23.67-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

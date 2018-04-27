@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "use p/invoke to put a symbol on top right of console window perhaps, to show events waiting? this way you could hook a \"terminating\" event on a synchronous .net object, and run it in a new-job script (a la jim truher's). You would get a single event when the job completed, which would be indicated by the, err, indicator :)",
+    "LastUpdatedDate": "2013-02-13T16:37:00-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "PSEventing",
+    "ReportedDate": "2007-05-10T09:46:56.27-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "implement an optional visual indicator to show \"events waiting\"",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 2198
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

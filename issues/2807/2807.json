@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2007-07-14T21:36:45.533-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "New cmdlet added to allow adding of custom PSEvent objects to the global event queue; the custom PSEvent permits a custom object payload by way of a PSEventArgs instance.",
+    "LastUpdatedDate": "2013-05-15T23:08:27-07:00",
+    "PlannedForRelease": "PSEventing 1.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "PSEventing",
+    "ReportedDate": "2007-07-14T21:36:39.24-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "add New-Event cmdlet for custom events",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 2807
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

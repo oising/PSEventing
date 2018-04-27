@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2008-01-12T11:58:50.527-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "read-event fits the queue metaphor better than get. also shortened to other command names.",
+    "LastUpdatedDate": "2017-12-09T01:32:24.12-08:00",
+    "PlannedForRelease": "PSEventing 1.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "PSEventing",
+    "ReportedDate": "2008-01-12T11:43:54.943-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "rename get-event to read-event, shorten (dis)connect-eventlistener to (dis)connect-event",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 5088
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Resolved with changeset 9041.",
+      "PostedDate": "2008-01-12T11:58:50.527-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-13T16:36:57.253-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-15T23:08:25.69-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-12-09T01:32:24.12-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

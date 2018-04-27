@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "195279",
+    "ThreadId": "57764",
+    "Html": "<p>I am trying to use the Add-EventHandler function:</p>\r\n<p>$fsw = New-Object system.IO.FileSystemWatcher<br>$fsw.Path = $pwd<br>$fsw.EnableRaisingEvents = $true<br>add-eventhandler fsw changed {Write-Host &quot;Something Happened&quot;}</p>\r\n<p>When I do that, I get the following error:</p>\r\n<p>Object reference not set to an instance of an object.<br>At :line:28 char:14<br>+ &nbsp;&nbsp;&nbsp; connect-event &lt;&lt;&lt;&lt;&nbsp; $variable $eventname</p>\r\n<p>What am I doing wrong?&nbsp; Feeling kind of dumb right now... sorry.</p>\r\n<p>B</p>",
+    "PostedDate": "2009-05-28T09:19:10.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213912",
+    "ThreadId": "57764",
+    "Html": "<p>Hi Brian,</p>\r\n<p>The first parameter in add-eventhandler expects a PSVariable, not a string, so invoke it like this:</p>\r\n<p>add-eventhandler (gv fsw) changed {Write-Host &quot;Something Happened&quot;}</p>\r\n<p>where gv is the alias for get-variable.</p>\r\n<p>Also, you then have to run the do-events function&nbsp;to have it process events. Again, these wrapper functions are just a simple demo of what you can do with pseventing. You have way more control once you learn how to use the individual cmdlets.</p>\r\n<p>-Oisin</p>",
+    "PostedDate": "2009-07-20T10:53:06.883-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

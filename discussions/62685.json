@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "212782",
+    "ThreadId": "62685",
+    "Html": "<p>I am trying to create a Powershell monitor to capture all Print Job information&nbsp;processed on a Print Server. I used the example at the following URL as a basis for my code:</p>\r\n<p><a href=\"http://thepowershellguy.com/blogs/posh/archive/2007/05/09/powershell-eventing-library-pseventing-0-5-beta-released.aspx\">http://thepowershellguy.com/blogs/posh/archive/2007/05/09/powershell-eventing-library-pseventing-0-5-beta-released.aspx</a></p>\r\n<p>I was successful in getting the Windows process example to work, but converting the code to capture Win32_PrintJob not so much... Here is my code:</p>\r\n<p>*************************************************************************************************</p>\r\n<pre><pre>Add-PSSnapin psEventing \r\n$query = New-Object System.Management.WQLEventQuery                                                               \r\n$query.EventClassName = &quot;__InstanceCreationEvent&quot;                                                                 \r\n$query.WithinInterval = New-TimeSpan -seconds 1                                                                   \r\n$query.Condition = &quot;TargetInstance ISA 'Win32_PrintJob'&quot;                                                           \r\n$query  \r\n$watcher = New-Object System.Management.ManagementEventWatcher($query)\r\nConnect-Event watcher EventArrived -Verbose\r\n$watcher.Start()  \r\n\r\nwhile ($events = @(read-event -wait)) {\r\n\twrite-output &quot;Event Count = &quot;,$events.Count\r\n\t\r\n\t# read-event always returns a collection\r\n\tforeach ($event in $events) {\r\n\t\twrite-host &quot;Print Job = &quot; $event.Args.NewEvent.TargetInstance.Document\r\n\t\t$event.Args.NewEvent.TargetInstance\r\n\t\t}\r\n\t}</pre>\r\n<pre>*************************************************************************************************</pre>\r\n<pre>Any help in solving this dilemna would be greatly appreciated!</pre>\r\n<pre>Eric</pre>\r\n</pre>",
+    "PostedDate": "2009-07-16T14:44:36.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214362",
+    "ThreadId": "62685",
+    "Html": "<p>I've tested that code on my local machine and it works fine when I print a page. I think the problem is that you are running that code on the print _server_. Win32_PrintJobs are generated on the *client* doing the printing, not the server AFAIK.</p>\r\n<p>-Oisin</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-21T08:15:12.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214874",
+    "ThreadId": "62685",
+    "Html": "<p>I'm running this on my client box... I retried the script, and it does capture the first print job but no subsequent jobs. Ideally I would like to run this on the Print Server to capture all print jobs - am I going down the wrong path?</p>\r\n<p>Eric</p>",
+    "PostedDate": "2009-07-22T10:50:16.71-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214916",
+    "ThreadId": "62685",
+    "Html": "<p>edit: replaced &quot;registry&quot; with &quot;event log&quot; (brainfart... pffrp!)</p>\r\n<p>I'm not really an expert in that area at all, but if it's only capturing one then perhaps there's something else that's going on.</p>\r\n<p>My gut instinct is that you might be going down a dead-end. Aren't print jobs logged to the Event Log? If so, you can use the same watcher trick to watch the Event Log and keep an eye out for print jobs being logged there. If they are not logged, you may have to switch on Auditing for that event - this will ensure they appear in the security event log which you can monitor with pseventing. Make sense?</p>\r\n<p>-Oisin</p>",
+    "PostedDate": "2009-07-22T12:15:32.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,87 @@
+function add-eventhandler ([system.management.automation.psvariable]$variable,
+		[string]$eventName,
+		[scriptblock]$script) {
+
+	if ((get-pssnapin pseventing -ea silentlycontinue) -eq $null) {
+		add-pssnapin pseventing
+	}
+
+
+	if ($__handlers -eq $null) {
+		$global:__handlers = @{}
+	}
+
+	if ($__handlers.ContainsKey($variable)) {
+		# already contains the var
+		$__handlers[$variable].Add($eventName, $script)
+	}
+	else {
+		# new var entry
+		$__handlers.Add($variable, @{$eventName=$script})
+	}
+	connect-eventlistener $variable $eventname
+}
+
+function remove-eventhandler([system.management.automation.psvariable]$variable, [string]$eventName) {
+
+	if ((get-pssnapin pseventing -ea silentlycontinue) -eq $null) {
+		add-pssnapin pseventing
+	}
+
+	if ($__handlers) {
+		if ($__handlers.ContainsKey($variable)) {
+			$mapping = $__handlers.Item($variable)
+			if ($mapping.ContainsKey($eventName)) {
+				$mapping.Remove($eventName)
+				disconnect-eventlistener $variable $eventname
+			}
+		}
+	}
+}
+
+function show-eventhandler {
+	if ((get-pssnapin pseventing -ea silentlycontinue) -eq $null) {
+		add-pssnapin pseventing
+	}
+
+	if ($__handlers) {
+		foreach ($variable in $__handlers.Keys) {	
+			$mapping = $__handlers.Item($variable)
+			$name = $variable.name
+			foreach ($eventName in $mapping.Keys) {
+				"`$$name.$eventName => $($mapping.item($eventName))"
+			}
+		}
+	}
+}
+
+function do-events($exitImmediately = $false) {
+	if ((get-pssnapin pseventing -ea silentlycontinue) -eq $null) {
+		add-pssnapin pseventing
+	}
+
+	$exit = $exitImmediately
+	
+	start-keyhandler -capturectrlc	
+	trap { stop-keyhandler }
+
+	do {
+		$events = (get-event -wait)
+		foreach ($event in $events) {
+			if ($event.Name -eq "CtrlC") {
+				"ctrl+c hit, exiting."
+				$exit = $true
+				break
+			}
+			if (test-path $event.source) {
+				$var = get-item $event.source
+				if ($__handlers.ContainsKey($var)) {
+					# call scriptblock with familiar (sender, eventargs) signature
+					$__handlers.Item($var).Item($event.name).Invoke($var, $event.args)
+				}
+			}
+		}
+	} while ($exit -eq $false)
+
+	stop-keyhandler
+}

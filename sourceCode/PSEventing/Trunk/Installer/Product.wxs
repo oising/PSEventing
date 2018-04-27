@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+	xmlns:ps="http://schemas.microsoft.com/wix/PSExtension">
+	<Product Id="e4802ec9-f4b8-4c16-87e1-2136dca6be9d" Name="PowerShell Eventing Snap-In (1.1)" Language="1033" Version="1.1.0.0" Manufacturer="Oisin Grehan" UpgradeCode="9d5e7353-bf3f-4091-9cdf-9308922fa5bc">
+		<Package InstallerVersion="200" Compressed="yes"
+				 InstallPrivileges="elevated" Manufacturer="Nivot Inc."
+				 InstallScope="perMachine" Description="A PowerShell Snap-In component allowing trapping and responding to .NET, COM and WMI events."/>
+
+		<Media Id="1" Cabinet="PSEventingSetup.cab" EmbedCab="yes" />
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLLOCATION" Name="Windows PowerShell Eventing Snap-In">
+					<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+					<Component Id="PSEventingSnapIn" Guid="6e2661e3-5b2a-4364-aeae-9b2b9e670a98">
+						<!-- TODO: Insert files, registry keys, and other resources here. -->
+						<File Id="SnapIn" AssemblyApplication="SnapIn" Name="Nivot.PowerShell.Eventing.dll" Assembly=".net" Source="$(var.PSEventing.TargetPath)" KeyPath="yes">
+							<ps:SnapIn Id="PSEventing" Version="1.1.0.0" Description="PowerShell Eventing 1.1" Vendor="Oisin Grehan">
+							</ps:SnapIn>
+						</File>
+						<File Id="HelpAbout" CompanionFile="SnapIn" Source="$(var.PSEventing.ProjectDir)\Help\about_PSEventing.help.txt"></File>
+						<File Id="HelpSnapIn" CompanionFile="SnapIn" Source="$(var.PSEventing.ProjectDir)\Help\Nivot.PowerShell.Eventing.dll-Help.xml"></File>
+					</Component> 
+				</Directory>
+			</Directory>
+		</Directory>
+
+		<Feature Id="ProductFeature" Title="PowerShell Eventing 1.1" Level="1">
+			<!-- TODO: Remove the comments around this ComponentRef element and the Component above in order to add resources to this installer. -->
+			 <ComponentRef Id="PSEventingSnapIn" /> 
+		</Feature>
+
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" ></Property>
+		<UIRef Id="WixUI_InstallDir"/>
+	</Product>
+</Wix>
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:ps="http://schemas.microsoft.com/wix/PSExtension">
+
+	<Product Id="70c34d93-bedb-4c1a-a692-583834f20447" Name="PowerShell Windows Mobile Snap-In (0.4.1 Beta)" Language="1033" Version="1.0.1.0" Manufacturer="Oisin Grehan @ Nivot Inc." UpgradeCode="7ec4ad03-9d94-4f50-ad29-11fd8d03f213">
+		<Package InstallerVersion="200" Compressed="yes" InstallPrivileges="elevated" Manufacturer="Nivot Inc." InstallScope="perMachine" Description="A PowerShell Snap-In component enabling any Windows Mobile device to be explored with PowerShell." />
+
+		<Media Id="1" Cabinet="PSMobileSetup.cab" EmbedCab="yes" />
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLLOCATION" Name="PowerShell Windows Mobile Snap-In">
+					<Component Id="PSMobileSnapIn" Guid="9e7be3cf-643f-4908-b0f4-a9db6c5003d3" DiskId="1">
+						<File Id="SnapIn" AssemblyApplication="SnapIn" Name="PSMobile.dll" Assembly=".net" Source="$(var.WindowsMobileProvider.TargetPath)" KeyPath="yes">
+
+							<ps:SnapIn Id="PSMobile" Version="0.4.1.0" Description="PowerShell Windows Mobile Provider" Vendor="Oisin Grehan">
+								<ps:FormatsFile FileId="psmobile.formats" />
+
+							</ps:SnapIn>
+						</File>
+						<File Id="psmobile.formats" Name="WindowsMobile.formats.ps1xml" Source="$(var.WindowsMobileProvider.ProjectDir)\FormatData\WindowsMobile.formats.ps1xml" />
+
+					</Component>
+					<Component Id="CEProxy" Guid="1DAC2502-2AC8-4b19-8CC6-44E8DB68EB42" DiskId="1">
+						<File Id="Proxy" Name="CEProxy.exe" Source="$(var.CEProxy.TargetPath)" KeyPath="yes" />
+					</Component>
+					<Component Id="BackingStoreProviderBase" Guid="D43DFB8A-F4BA-4a30-A98E-F92556520DDD" DiskId="1">
+
+						<File Id="ProviderBase" Name="Nivot.PowerShell.BackingStoreProvider.dll" Source="$(var.WindowsMobileProvider.TargetDir)\Nivot.PowerShell.BackingStoreProvider.dll" KeyPath="yes" Assembly=".net" AssemblyApplication="ProviderBase" />
+					</Component>
+				</Directory>
+			</Directory>
+		</Directory>
+
+		<Feature Id="ProductFeature" Title="PowerShell Windows Mobile Provider" Level="1">
+
+			<ComponentRef Id="PSMobileSnapIn" />
+			<ComponentRef Id="CEProxy" />
+			<ComponentRef Id="BackingStoreProviderBase" />
+		</Feature>
+
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" ></Property>
+		<UIRef Id="WixUI_InstallDir"/>
+	</Product>
+</Wix>
+-->

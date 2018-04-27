@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1120843",
+    "ThreadId": "467291",
+    "Html": "Hello,\r<br />\nI have to recode following vbs code to ps1. Who can help, please?\r<br />\n<br />\n============= vbs ======\r<br />\n<br />\nDim Zt\r<br />\nDim Counter\r<br />\n<br />\nSet Zt = Wscript.CreateObject(&quot;Zeit.Tic&quot;, &quot;Zt_&quot;)\r<br />\n<br />\nFunction Zt_Tic(ByVal Meldung, ByRef bAus) \r<br />\n<br />\n  WScript.echo Meldung\r<br />\n<br />\n  Counter = Counter + 1\r<br />\n<br />\n  if Counter = 10 then <br />\n<pre><code>  Set Zt = Nothing\n\n  Wscript.Quit\n</code></pre>\n\nend if  <br />\n<br />\nEnd function\r<br />\n<br />\n<br />\n<br />\nZt.Init(1)\r<br />\n<br />\n==============================0\r<br />\n<br />\nThere is a registered Active-X VB6  zeit.dll, which does generate an Event.\r<br />\nIn this example each 1 sec.\r<br />\n<br />\nWho can help to recode it in PS ???\r<br />\n<br />\nThanks in advance, Jan<br />\n",
+    "PostedDate": "2013-11-09T11:03:18.07-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

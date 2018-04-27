@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "50143",
+    "ThreadId": "15434",
+    "Html": "\r\nDoes \"get-event -wait\" pump windows messages?  <br /><br />I'm finding that certain com objects aren't generating events as I'd expect and I'm guessing that this is because the thread isnt having it's message pump serviced during the call to get-event.  <br /><br />",
+    "PostedDate": "2007-09-21T01:02:03.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "50500",
+    "ThreadId": "15434",
+    "Html": "\r\nUnfortunately no, it does not pump window messages. This is a good idea though I guess for the future.<br /><br />You could try starting the included \"Start-KeyHandler\" cmdlet (with -CaptureKeys) as this spins up a message pump in the background which is needed to intercept keystrokes, but then you'd have to filter out the keystroke events in the queue.<br />",
+    "PostedDate": "2007-09-24T08:39:26.787-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "50843",
+    "ThreadId": "15434",
+    "Html": "\r\nThanks for the response Oisin, I'll try your suggestion.  <br /><br />I'll take this opportunity though to stress how common it is for objects to rely on a message pump.   STA based COM objects in particular typically use it as their synchronisation mechanism; especially if they fire events.  Such objects account for a substantial proportion of all objects that are out there - and without a message pump they're unlikely to work, <br /><br />That said, I thoroughly appluade what you've done with your library - it's a great enhancement to Powershell.<br />",
+    "PostedDate": "2007-09-26T09:28:04.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "51324",
+    "ThreadId": "15434",
+    "Html": "\r\nHi Michael,<br /><br />I'm not really a GUI guy, and my exposure to COM and window messages have been picked up from debugging other people's code, but having said that, I've spent the last week refreshing my knowledge on the in-and-outs of STA/MTA and the CLR regarding message pumping. It's a nasty pit of dirtiness, but if I didn't like that stuff I probably wouldn't have written this snap-in. I believe I've got a (wait)handle (har-har) on it now, so keep tuned for a 1.1 update very soon.<br /><br />- Oisin<br /><br />",
+    "PostedDate": "2007-09-30T12:28:37.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "51329",
+    "ThreadId": "15434",
+    "Html": "\r\nQuick update - I just looked at the get-event code for v1.0 and if you use the -Wait switch, message pumping will happen:<br /><br /><pre style=\"background-color:#ECECEC; border:dashed .1em #3E62A6; font-family:Consolas, Courier New, Courier, Monospace; font-size:1em; margin-top:0; padding:.5em; height:auto; overflow:auto; overflow-x:auto; overflow-y:auto;\">\r\n        protected override void EndProcessing()\r\n        {            \r\n            Dump(\"Begin\");\r\n            PSEventQueue queue = PSEventQueue.Instance;\r\n \r\n            try\r\n            {\r\n                List&lt;PSEvent&gt; eventList = null;\r\n \r\n                if (Wait.IsPresent)\r\n                {\r\n                    if (queue.HasEvents == false)\r\n                    {\r\n                        Thread t = new Thread(new ThreadStart(WaitForEventOrBreak));\r\n                        t.IsBackground = true;\r\n                        t.Start();\r\n                        t.Join(); // pump COM &amp; window messages\r\n                    }\r\n                }\r\n                eventList = queue.DequeueAll();\r\n \r\n                if (eventList != null)\r\n                {\r\n                    WriteObject(eventList, true);\r\n                }\r\n            }\r\n            catch (Exception ex)\r\n            {\r\n                Trace.WriteLine(ex.ToString(), \"GetEvent Error\");\r\n            }\r\n            Dump(\"End\");\r\n        }\r\n \r\n        private static void WaitForEventOrBreak()\r\n        {\r\n            PSEventQueue queue = PSEventQueue.Instance;\r\n            while (queue.HasEvents == false &amp;&amp; (!queue.CtrlCHit))\r\n            {\r\n                Thread.Sleep(100);\r\n            }\r\n        }\r\n</pre>...from GetEventCommand.cs<br /><br />This happens on one of powershell's MTA threads though - not sure how that affects you, I guess it depends on the COM object. I'm not 100% sure of the interaction, but depending on how you created the COM object, the current thread executing your script may have been moved into an STA and the Join is blocking it from consuming messages. Anyway, I've refactored it to hopefully be more COM friendly by no longer blocking the calling thread:<br /><br /><pre style=\"background-color:#ECECEC; border:dashed .1em #3E62A6; font-family:Consolas, Courier New, Courier, Monospace; font-size:1em; margin-top:0; padding:.5em; height:auto; overflow:auto; overflow-x:auto; overflow-y:auto;\">\r\n                    ...\r\n                    if (queue.HasEvents == false)\r\n                    {\r\n                        Thread t = new Thread(new ThreadStart(WaitForEventOrBreak));\r\n                        t.IsBackground = true;\r\n                        t.Start();\r\n                        while (t.IsAlive)\r\n                        {\r\n                            // process window messages\r\n                            Application.DoEvents();\r\n                            Thread.Sleep(100);\r\n                        }\r\n                        t.Join();\r\n                    }\r\n                    ...\r\n</pre>...while pumping messages in the child thread:<br /><br /><pre style=\"background-color:#ECECEC; border:dashed .1em #3E62A6; font-family:Consolas, Courier New, Courier, Monospace; font-size:1em; margin-top:0; padding:.5em; height:auto; overflow:auto; overflow-x:auto; overflow-y:auto;\">\r\n        private static void WaitForEventOrBreak()\r\n        {\r\n            PSEventQueue queue = PSEventQueue.Instance;\r\n            while (queue.HasEvents == false &amp;&amp; (!queue.CtrlCHit))\r\n            {\r\n                // perform com/sendmessage pumping\r\n                Thread.CurrentThread.Join(0);\r\n                Thread.Sleep(100);\r\n            }\r\n        }\r\n</pre>I'll compile up a 1.1 Beta and place it in the downloads for you to try out. Please let me know how you get on.<br />",
+    "PostedDate": "2007-09-30T12:46:34.92-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "51343",
+    "ThreadId": "15434",
+    "Html": "\r\nThis discussion has been copied to a work item. Click here to <a href=\"http://www.codeplex.com/PSEventing/WorkItem/View.aspx?WorkItemId=3533\">go to the work item and continue the discussion</a>.<br />",
+    "PostedDate": "2007-09-30T13:37:21.807-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

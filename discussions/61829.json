@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "209853",
+    "ThreadId": "61829",
+    "Html": "<p>I have hosted powershell in a .Net application.</p>\r\n<p>I want to fire an event from a commandlet and want to trap it in an application that is invoking script through pipeline.</p>\r\n<p>I dont know how to handle this.</p>\r\n<p>Please help me out to find a solution.</p>\r\n<p>Thanks in advance</p>",
+    "PostedDate": "2009-07-08T03:30:08.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214299",
+    "ThreadId": "61829",
+    "Html": "<p>Hi,</p>\r\n<p>This shouldn't be difficult to do. PowerShell script can access any of the classes in the hosting application.&nbsp;I suggest you create a singleton type and use powershell script to raise an event on it. Before you run the script, you would hook an event on it from your host application. Follow me?</p>\r\n<p>-Oisin</p>\r\n<p>public class Notifier {<br>&nbsp; public static readonly Notifier Instance&nbsp;= new Notifier();<br>&nbsp; private Notifier() { }<br>&nbsp; public event EventHandler MyEvent = delegate { }<br>&nbsp; public void FireEvent() { MyEvent(this, null); }&nbsp;<br>}</p>\r\n<p>and in PowerShell:<br><br>[notifier]::instance.fireevent()<br><br></p>",
+    "PostedDate": "2009-07-21T06:38:25.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

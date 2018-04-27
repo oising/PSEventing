@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "50412",
+    "ThreadId": "15522",
+    "Html": "\r\nI'm trying to connect to the SQL Management Objects to output server messages to a file while a create database script runs with the 1.0 release.<br /><br />Running the following works:<br /><pre style=\"background-color:#ECECEC; border:dashed .1em #3E62A6; font-family:Consolas, Courier New, Courier, Monospace; font-size:1em; margin-top:0; padding:.5em; height:auto; overflow:auto; overflow-x:auto; overflow-y:auto;\">\r\n. .\\EventHandler.ps1\r\n[System.Reflection.Assembly]::LoadWithPartialName(\"Microsoft.SqlServer.Smo\")\r\n$DatabaseServer = new-object ('Microsoft.SqlServer.Management.Smo.Server') \"MYSERVER\"\r\n$ConnectionContext = $DatabaseServer.ConnectionContext\r\nGet-EventBinding ConnectionContext -IncludeUnboundEvents | Format-Table -Auto\r\n</pre><br />But I hit a road block at:<br /><pre style=\"background-color:#ECECEC; border:dashed .1em #3E62A6; font-family:Consolas, Courier New, Courier, Monospace; font-size:1em; margin-top:0; padding:.5em; height:auto; overflow:auto; overflow-x:auto; overflow-y:auto;\">\r\nAdd-EventHandler (get-variable ConnectionContext) ServerMessage { Write-Host \"Foo\"; } \r\nAdd-EventHandler (get-variable ConnectionContext) InfoMessage { Write-Host \"Foo\"; }\r\n</pre><br />With the following error:<br /><ul><li><i>Connect-EventListener : Unable to cast object of type 'Microsoft.SqlServer.Management.Common.ServerConnection' to type 'System.Management.Automation.PSObject'.</i></li></ul><br />Thoughts on work arounds?<br /><br />Thanks,<br />Colin<br />",
+    "PostedDate": "2007-09-23T15:05:53.047-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "51321",
+    "ThreadId": "15522",
+    "Html": "\r\nHi Colin,<br /><br />I have SQL server SMO at home here, I'll take a closer look at what's happening and report back here!<br /><br />Cheers,<br /><br />- Oisin<br />",
+    "PostedDate": "2007-09-30T12:24:45.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9CD87BE2-8949-49FA-BDEC-1D5805EEAE00}"
+	ProjectSection(SolutionItems) = preProject
+		notes.txt = notes.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Releases", "Releases", "{94264046-CE70-4BEF-BA67-3AF80CF6DEF0}"
+	ProjectSection(SolutionItems) = preProject
+		Src\bin\Release\Nivot.PowerShell.Eventing-0.5.2686.15173.zip = Src\bin\Release\Nivot.PowerShell.Eventing-0.5.2686.15173.zip
+		Src\bin\Release\Nivot.PowerShell.Eventing-1.0.2752.37836.zip = Src\bin\Release\Nivot.PowerShell.Eventing-1.0.2752.37836.zip
+		Src\bin\Release\Nivot.PowerShell.Eventing-1.0.2760.36525.zip = Src\bin\Release\Nivot.PowerShell.Eventing-1.0.2760.36525.zip
+		Src\bin\Nivot.PowerShell.Eventing-1.0.2768.17386-DEBUG.zip = Src\bin\Nivot.PowerShell.Eventing-1.0.2768.17386-DEBUG.zip
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSEventingPlus", "PSEventingPlus\PSEventingPlus.csproj", "{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs02
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PSEventingPlus\\PSEventingPlus.csproj
+		SccProjectName1 = PSEventingPlus
+		SccLocalPath1 = PSEventingPlus
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{94264046-CE70-4BEF-BA67-3AF80CF6DEF0} = {9CD87BE2-8949-49FA-BDEC-1D5805EEAE00}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,53 @@
+INCLUDED EXAMPLE SCRIPTS
+    FileSystemWatcher.ps1        
+        An example script showing how to watch and respond to events 
+        generated from the filesystem such as: changes, renames, updates,
+        deletes, etc. 
+        
+        PS> .\examples\filesystemwatcher.ps1
+    
+    WMI.ps1
+        An example script showing how to deal with WMI events using the 
+        standard .net delegate/event paradigm instead of the clunky 
+        "WaitForNextEvent" method.
+        
+    WebClient.ps1
+        An example script demonstrating multiple background downloads
+        using System.Net.WebClient incorporating Write-Progress progress
+        reporting, and Ctrl+C handling with clean-up.
+
+FEEDBACK
+    Please submit any feedback, including defects and enhancement requests, 
+    to either the discussions forums at:
+
+    http://www.codeplex.com/PSEventing/Thread/List.aspx
+
+    or via the Issue Tracker at:
+
+    http://www.codeplex.com/PSEventing/WorkItem/List.aspx
+
+AUTHOR
+    Oisin Grehan is a 33 year old Irish-born programmer, living in Montreal,
+    Canada. He can be contacted at:
+    
+    oising@gmail.com
+    
+    He posts random gibber to his blog at http://www.nivot.org/ and can be
+    occasionally found dawdling on #powershell on irc.freenode.net.
+           
+SEE ALSO
+    For other projects the author is involved in, see:
+    
+    PowerShell Community Extensions (PSCX)
+    http://www.codeplex.com/PowerShellCX
+    
+    PowerShell SharePoint Provider
+    http://www.codeplex.com/PSSharePoint
+
+THANKS & SHOUT OUTS
+    To Keith Hill, coordinator of the PSCX project, without whom this help
+    would not have been so easy to generate ;)
+    
+    To mow, xaegrr, klumsy, frb, rfoust, jtruher, gaurhoth, k5wtf and others on
+    freenode's #powershell IRC channel; come join us there, and waste away the day!
+      

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "fixed in 1.1",
+    "ClosedDate": "2008-06-04T10:07:05.64-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The snapin cannot handle events with EventHandler<T> generic delegates.",
+    "LastUpdatedDate": "2013-05-15T23:08:26.67-07:00",
+    "PlannedForRelease": "PSEventing 1.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "PSEventing",
+    "ReportedDate": "2007-11-07T15:25:14.387-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Unable to bind to EventHandler<T> events",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 4323
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

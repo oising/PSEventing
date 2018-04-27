@@ -1,0 +1,14 @@
+TOPIC
+    PowerShell Eventing Library (version 1.1 Beta)
+
+SHORT DESCRIPTION
+    Describes the Windows PowerShell Eventing (PSEventing) snapin and 
+    how to use the contained cmdlets and scripts that ship with PSEventing.
+
+LONG DESCRIPTION
+    PowerShell Eventing is a PowerShell Snapin that opens a new door for 
+    scripters into the powerful world of .NET events. Previously thought shut
+    tight given the nature of the command-line driven prompt, this library 
+    provides the tools to automatically capture events in real-time, but lets
+    you deal with them in your time. 
+    

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "98051",
+    "ThreadId": "29416",
+    "Html": "<p>I'm wondering if there is a way to use PSEventing given my situation. In the code below you'll notice that in the foreach loop I attach and event handler during each iteration but this fails because the code for the Add-Eventhandler is a hashtable and you cannot add the same event name more than once. I'm hoping someone can provide me with more details on this line $events = @(read-event -wait) and what properties are avialable for each event that it returns. Is it possible to re-write Add-Eventhandler to use a unique event guid as the hashtables key rather than an event name?</p>\r\n<p>foreach ($ApplicationEntry in $($Project.Applications).GetEnumerator())) <br>\r\n{<br>\r\n&nbsp;...</p>\r\n<p>&nbsp;$Step = $MiscPackage.Steps.Get_Item(&quot;Step XYZ&quot;) <br>\r\n&nbsp;<br>\r\n&nbsp;Add-EventHandler (get-variable Step) StepFailed { param($var) Write-Error &quot;The step $($var.Value.Name) failed!&quot; }</p>\r\n<p>&nbsp;$Step.Execute();</p>\r\n<p>}</p>\r\n<p>Write-Host &quot;Waiting for events..&quot; <br>\r\nDo-Events $true</p>\r\n<p>thx, joey </p>\r\n",
+    "PostedDate": "2008-06-10T16:59:11.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "98261",
+    "ThreadId": "29416",
+    "Html": "<br>\r\n<div style=\"border-right:medium none;padding-right:0.2em;border-top:#aaa 0.1em dotted;padding-left:0.2em;padding-bottom:0.2em;margin:1em 0em 2.5em 3em;border-left:medium none;padding-top:0.2em;border-bottom:#aaa 0.1em dotted;font-style:italic\"><br>\r\n<p>Ok, I looked at the source and it will be impossible to bind the same event name to the same ps variable more than once without completely re-writing the source code. I did resolve this, just needed to dynamically create my variable in the for loop so that each ps variable is unique.</p>\r\n<p># dynamic variable index<br>\r\n$StepIndex = 0</p>\r\n<p>foreach ($ApplicationEntry in $($Project.Applications).GetEnumerator())) <br>\r\n{<br>\r\n&nbsp;...<br>\r\n&nbsp;<br>\r\n&nbsp;$New-Variable &quot;Step$StepIndex&quot; -value $MiscPackage.Steps.Get_Item(&quot;Step XYZ&quot;)</p>\r\n<p>&nbsp;# get a reference to the dynamic variable<br>\r\n&nbsp;$Step = (Get-Variable &quot;Step$StepIndex&quot; -ValueOnly)</p>\r\n<p>&nbsp;... do some stuff to the step ...</p>\r\n<p>&nbsp;Add-EventHandler (Get-Variable &quot;Step$StepIndex&quot;) StepFailed { param($var) Write-Error &quot;The step $($var.Value.Name) failed!&quot; }<br>\r\n&nbsp;<br>\r\n&nbsp;$Step.Execute();</p>\r\n<p>&nbsp;# increment our step index by one<br>\r\n&nbsp;$StepIndex++<br>\r\n}</p>\r\n<p>Write-Host &quot;Waiting for events..&quot; <br>\r\nDo-Events $true</p>\r\n<p>cheers,<br>\r\njoey</p>\r\n</div>\r\n",
+    "PostedDate": "2008-06-11T13:34:52.763-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

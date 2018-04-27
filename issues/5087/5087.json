@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2008-01-12T11:58:48.043-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "add named queue support to all related cmdlets:\n \n* read-event [[-queuename] <queue>] \n \n* get-eventqueue [[-queuename] <queue>,<queue>,... ]\n \nthis allows event sources to be partitioned easily.",
+    "LastUpdatedDate": "2017-12-09T01:32:23.897-08:00",
+    "PlannedForRelease": "PSEventing 1.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "PSEventing",
+    "ReportedDate": "2008-01-12T11:40:29.77-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "implement multiple named queues support",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 5087
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Resolved with changeset 9041.",
+      "PostedDate": "2008-01-12T11:58:48.043-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-13T16:36:57.813-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-15T23:08:26.247-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-12-09T01:32:23.897-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

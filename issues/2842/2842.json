@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "* new-alert [ [-eventname] <eventname> ] [ [-variable] <var> | [-variablename] <varname> ] [ [-count] <count>] [ [-message] <msg>] - type <balloon | apptitle | sound | email> [-onceonly] \n \n(returns alert id)\n \n* get-alert  [ [-id] alertid ]   (lists active alerts/notification)\n \n* remove-alert <alertid>\n \nthese will be used as a foundation to build rich job handling scripts.",
+    "LastUpdatedDate": "2017-12-09T01:32:22.027-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "PSEventing",
+    "ReportedDate": "2007-07-18T07:05:32.037-07:00",
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "add some alert/notification cmdlets",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 2842
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

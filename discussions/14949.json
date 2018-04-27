@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "48618",
+    "ThreadId": "14949",
+    "Html": "\r\nWhere is WMI.ps1?<br />",
+    "PostedDate": "2007-09-10T10:03:27.507-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "49669",
+    "ThreadId": "14949",
+    "Html": "\r\nMoW of <a href=\"www.thepowershellguy.com\" class=\"externalLink\">www.thepowershellguy.com<span class=\"externalLinkIcon\" style=\"font-family:Consolas, Courier New, Courier, Monospace;\"></span></a> fame did a bit of a WMI writeup with the previous version, 0.5. You can get some ideas <a href=\"http://thepowershellguy.com/blogs/posh/archive/2007/05/09/powershell-eventing-library-pseventing-0-5-beta-released.aspx\" class=\"externalLink\">there<span class=\"externalLinkIcon\" style=\"font-family:Consolas, Courier New, Courier, Monospace;\"></span></a><br />",
+    "PostedDate": "2007-09-17T12:13:30.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

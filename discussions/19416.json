@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "64078",
+    "ThreadId": "19416",
+    "Html": "\r\nHi,<br /><br />I'm struggling with PSEventing to make my script look for process to exit after launching it on remote host. Code is below<br /><br /><br /><br />$query = New-Object System.Management.WqlEventQuery<br />$query.EventClassName = \"__InstanceDeletionEvent\"                                                                 <br />$query.WithinInterval = New-TimeSpan -seconds 50                                                                   <br />$query.Condition = \"TargetInstance ISA 'Win32_Process'\"  <br />$watcher = New-Object System.Management.ManagementEventWatcher ($query)<br />Connect-EventListener watcher EventArrived -Verbose <br />$watcher.Start()<br />$e = Get-Event<br />do<br />{<br />if ($e.TargetInstance.ProcessID -eq 2344){break}<br />}<br />while ($true)<br /><br /><br />How do I stop my code if I know ProcessID of remote process which is supposed to be exiting?<br />Code above is<br />",
+    "PostedDate": "2007-12-19T06:35:28.873-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "65169",
+    "ThreadId": "19416",
+    "Html": "\r\nHi ArtisticCheese,<br /><br />Just a quick note to let you know I've noticed this post! ;-) I'll post a working example later this evening or tomorrow - sorry for not noticing you sooner.<br /><br />- Oisin<br />",
+    "PostedDate": "2007-12-27T16:44:51.073-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

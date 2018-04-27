@@ -1,0 +1,505 @@
+$o = [Nivot.PowerShell.Eventing.Test.GenericEvents]::Instance
+
+    PS E:\projects\powershell> Connect-EventListener variable:wc changed -verbose
+    VERBOSE: Target is a FileSystemWatcher
+    VERBOSE: Event changed bound.
+
+    PS E:\projects\powershell> Connect-EventListener wc changed -verbose
+    WARNING: Event changed is already bound for this variable.
+
+    PS E:\projects\powershell> Connect-EventListener $(get-item variable:wc) changed -verbose
+    WARNING: Event changed is already bound for this variable.
+ 
+ // this doesn't work within powershell, hence the need for custom breakhandler via p/invoke
+ [system.console]::TreatControlCAsInput = $true
+ while(1) {}<ctrlc> boom
+ 
+ // global system key interception
+ http://www.developer.com/net/net/article.php/11087_2193301_1
+
+// more console key grabs
+http://www.thescripts.com/forum/thread214521.html
+
+// the one: steven toub - low level key access in c#
+http://blogs.msdn.com/toub/archive/2006/05/03/589423.aspx
+
+// low level mouse hooks in c# ;-)
+http://blogs.msdn.com/toub/archive/2006/05/03/589468.aspx
+
+/*
+ * http://msdn2.microsoft.com/en-us/library/ms228976(VS.80).aspx#procedureSection1
+ * http://msdn2.microsoft.com/en-us/library/cxz4wk15(VS.80).aspx
+ * http://msdn2.microsoft.com/en-us/library/system.reflection.eventinfo(VS.80).aspx
+ * 
+**/
+
+important: global hook (keyb/mouse LL) thread/module affinity: http://blogs.msdn.com/oldnewthing/archive/2005/04/25/411741.aspx
+
+
+
+instead of a global event queue, decorate each variable with an Attribute which has its own queue instance and binding list!
+that way, when the variable is eventually nulled out or goes out of scope, it does its own cleanup!
+w00t!
+
+C:\_src\powershell\pseventing\pseventlib\Examples\webclient.ps1
+
+downloadprogresschanged
+
+    Console.WriteLine("{0    downloaded {1 of {2 bytes. {3 % complete...", 
+        (string)e.UserState, 
+        e.BytesReceived, 
+        e.TotalBytesToReceive,
+        e.ProgressPercentage);
+
+binding scriptblocks to event handlers
+http://arildf.spaces.live.com/blog/cns!E99F8B43533149B0!127.entry
+
+
+maml :command
+
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+        Add-Content
+      </command:name>
+      <maml:description>
+        <maml:para>Adds content to the specified item(s).</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para></maml:para>
+      </maml:copyright>
+      <command:verb>add</command:verb>
+      <command:noun>content</command:noun>
+      <dev:version></dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>The Add-Content cmdlet appends content to a specified item or file. You can specify the content by typing the content in the command or by specifying an object that contains the content.</maml:para>
+    </maml:description>
+     Cmdlet syntax section
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Add-Content</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="true" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>path</maml:name>
+          <maml:description>
+            <maml:para>Specifies the path to the items that receive the additional content. Wildcards are permitted. If you specify multiple paths, use commas to separate the paths.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
+          <maml:name>value</maml:name>
+          <maml:description>
+            <maml:para>
+              Specifies the content to be added. Type a quoted string, such as &quot;This data is for internal use only&quot; or specify an object that contains content, such as the DateTime object that Get-Date generates.
+
+              You cannot specify the contents of a file by typing its path, because the path is just a string, but you can use a Get-Content command to get the content and pass it to the Value parameter.
+            </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="named">
+          <maml:name>include</maml:name>
+          <maml:description>
+            <maml:para>Adds only the specified items. The value of this parameter qualifies the Path parameter. Enter a path element or pattern, such as &quot;*.txt&quot;. Wildcards are permitted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="named">
+          <maml:name>exclude</maml:name>
+          <maml:description>
+            <maml:para>Omits the specified items. The value of this parameter qualifies the Path parameter. Enter a path element or pattern, such as &quot;*.txt&quot;. Wildcards are permitted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="true" pipelineInput="false" position="named">
+          <maml:name>filter</maml:name>
+          <maml:description>
+            <maml:para>Specifies a filter in the provider's format or language. The value of this parameter qualifies the Path parameter. The syntax of the filter, including the use of wildcards, depends on the provider. Filters are more efficient than other parameters, because the provider applies them when retrieving the objects, rather than having Windows PowerShell filter the objects after they are retrieved.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>passThru</maml:name>
+          <maml:description>
+            <maml:para>Passes the object created by this cmdlet through the pipeline. By default, this cmdlet does not pass any objects through the pipeline.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>force</maml:name>
+          <maml:description>
+            <maml:para>Overrides restrictions that prevent the command from succeeding, just so the changes do not compromise security. For example, Force will override the read-only attribute or create directories to complete a file path, but it will not attempt to change file permissions.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>credential</maml:name>
+          <maml:description>
+            <maml:para>Uses a credential to validate access to the file. &lt;Credential&gt; represents a user-name, such as &quot;User01&quot; or &quot;Domain01\User01&quot;, or a PSCredential object, such as the one retrieved by using the Get-Credential cmdlet. If you type a user name, you will be prompted for a password. This parameter appears, but it is not supported in any Windows PowerShell core cmdlets or providers.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>whatIf</maml:name>
+          <maml:description>
+            <maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before executing the command.</maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Add-Content</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>literalPath</maml:name>
+          <maml:description>
+            <maml:para>Specifies the path to the items that receive the additional content. Unlike Path, the value of LiteralPath is used exactly as it is typed. No characters are interpreted as wildcards. If the path includes escape characters, enclose it in single quotation marks. Single quotation marks tell Windows PowerShell not to interpret any characters as escape sequences.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
+          <maml:name>value</maml:name>
+          <maml:description>
+            <maml:para>
+              Specifies the content to be added. Type a quoted string, such as &quot;This data is for internal use only&quot; or specify an object that contains content, such as the DateTime object that Get-Date generates.
+
+              You cannot specify the contents of a file by typing its path, because the path is just a string, but you can use a Get-Content command to get the content and pass it to the Value parameter.
+            </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="named">
+          <maml:name>include</maml:name>
+          <maml:description>
+            <maml:para>Adds only the specified items. The value of this parameter qualifies the Path parameter. Enter a path element or pattern, such as &quot;*.txt&quot;. Wildcards are permitted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="named">
+          <maml:name>exclude</maml:name>
+          <maml:description>
+            <maml:para>Omits the specified items. The value of this parameter qualifies the Path parameter. Enter a path element or pattern, such as &quot;*.txt&quot;. Wildcards are permitted.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="true" pipelineInput="false" position="named">
+          <maml:name>filter</maml:name>
+          <maml:description>
+            <maml:para>Specifies a filter in the provider's format or language. The value of this parameter qualifies the Path parameter. The syntax of the filter, including the use of wildcards, depends on the provider. Filters are more efficient than other parameters, because the provider applies them when retrieving the objects, rather than having Windows PowerShell filter the objects after they are retrieved.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>passThru</maml:name>
+          <maml:description>
+            <maml:para>Passes the object created by this cmdlet through the pipeline. By default, this cmdlet does not pass any objects through the pipeline.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>force</maml:name>
+          <maml:description>
+            <maml:para>Overrides restrictions that prevent the command from succeeding, just so the changes do not compromise security. For example, Force will override the read-only attribute or create directories to complete a file path, but it will not attempt to change file permissions.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>credential</maml:name>
+          <maml:description>
+            <maml:para>Uses a credential to validate access to the file. &lt;Credential&gt; represents a user-name, such as &quot;User01&quot; or &quot;Domain01\User01&quot;, or a PSCredential object, such as the one retrieved by using the Get-Credential cmdlet. If you type a user name, you will be prompted for a password. This parameter appears, but it is not supported in any Windows PowerShell core cmdlets or providers.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>whatIf</maml:name>
+          <maml:description>
+            <maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before executing the command.</maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+     Cmdlet parameter section  
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="true" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>path</maml:name>
+        <maml:description>
+          <maml:para>Specifies the path to the items that receive the additional content. Wildcards are permitted. If you specify multiple paths, use commas to separate the paths.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string[]</command:parameterValue>
+        <dev:type>
+          <maml:name>string[]</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>N/A - The path must be specified</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="named">
+        <maml:name>include</maml:name>
+        <maml:description>
+          <maml:para>Adds only the specified items. The value of this parameter qualifies the Path parameter. Enter a path element or pattern, such as &quot;*.txt&quot;. Wildcards are permitted.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+        <dev:type>
+          <maml:name>string[]</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="false" position="named">
+        <maml:name>exclude</maml:name>
+        <maml:description>
+          <maml:para>Omits the specified items. The value of this parameter qualifies the Path parameter. Enter a path element or pattern, such as &quot;*.txt&quot;. Wildcards are permitted.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+        <dev:type>
+          <maml:name>string[]</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="true" pipelineInput="false" position="named">
+        <maml:name>filter</maml:name>
+        <maml:description>
+          <maml:para>Specifies a filter in the provider's format or language. The value of this parameter qualifies the Path parameter. The syntax of the filter, including the use of wildcards, depends on the provider. Filters are more efficient than other parameters, because the provider applies them when retrieving the objects, rather than having Windows PowerShell filter the objects after they are retrieved.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
+        <maml:name>value</maml:name>
+        <maml:description>
+          <maml:para>
+            Specifies the content to be added. Type a quoted string, such as &quot;This data is for internal use only&quot; or specify an object that contains content, such as the DateTime object that Get-Date generates.
+
+            You cannot specify the contents of a file by typing its path, because the path is just a string, but you can use a Get-Content command to get the content and pass it to the Value parameter.
+          </maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Object[]</command:parameterValue>
+        <dev:type>
+          <maml:name>Object[]</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>passThru</maml:name>
+        <maml:description>
+          <maml:para>Passes the object created by this cmdlet through the pipeline. By default, this cmdlet does not pass any objects through the pipeline.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>force</maml:name>
+        <maml:description>
+          <maml:para>Overrides restrictions that prevent the command from succeeding, just so the changes do not compromise security. For example, Force will override the read-only attribute or create directories to complete a file path, but it will not attempt to change file permissions.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>credential</maml:name>
+        <maml:description>
+          <maml:para>Uses a credential to validate access to the file. &lt;Credential&gt; represents a user-name, such as &quot;User01&quot; or &quot;Domain01\User01&quot;, or a PSCredential object, such as the one retrieved by using the Get-Credential cmdlet. If you type a user name, you will be prompted for a password. This parameter appears, but it is not supported in any Windows PowerShell core cmdlets or providers.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+        <dev:type>
+          <maml:name>PSCredential</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>literalPath</maml:name>
+        <maml:description>
+          <maml:para>Specifies the path to the items that receive the additional content. Unlike Path, the value of LiteralPath is used exactly as it is typed. No characters are interpreted as wildcards. If the path includes escape characters, enclose it in single quotation marks. Single quotation marks tell Windows PowerShell not to interpret any characters as escape sequences.</maml:para>
+
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string[]</command:parameterValue>
+        <dev:type>
+          <maml:name>string[]</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>whatIf</maml:name>
+        <maml:description>
+          <maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+        </maml:description>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before executing the command.</maml:para>
+        </maml:description>
+      </command:parameter>
+    </command:parameters>
+     Input - Output section
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+          <maml:description>
+            <maml:para>
+               description  
+              You can enter parameters as strings at the command line or pipe objects to the cmdlet.
+            </maml:para>
+          </maml:description>
+        </dev:type>
+        <maml:description></maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>None by default. If -passthru is specified, the content object is passed through the pipeline.</maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para>
+               description  
+
+            </maml:para>
+          </maml:description>
+        </dev:type>
+        <maml:description></maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+     Notes section  
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para>
+          For more information, type &quot;Get-Help Add-Content -detailed&quot;. For technical information, type &quot;Get-Help Add-Content -full&quot;.
+
+          When specifying multiple values for a parameter, use commas to separate the values. For example, &quot;&lt;parameter-name&gt; &lt;value1&gt;, &lt;value2&gt;&quot;.
+
+          You can also refer to Add-Content by its built-in alias, &quot;ac&quot;. For more information, type &quot;get-help About_Alias&quot;.
+        </maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+     Example section  
+    <command:examples>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>add-content -path *.txt -exclude help* -value &quot;END&quot;</dev:code>
+        <dev:remarks>
+          <maml:para>This command adds &quot;END&quot; to all text files in the current directory, except for those with file names that begin with &quot;help&quot;.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para>      </maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>add-content -Path file1.log, file2.log -Value (get-date) -passthru.</dev:code>
+        <dev:remarks>
+          <maml:para>This command adds the date to the end of the File1.log and File2.log files and then displays the date at the command line. The command uses the Get-Date cmdlet to get the date and the Value parameter to pass the date to Add-Content. The Passthru parameter passes an object representing the added content through the pipeline. Because there is no other cmdlet to receive the passed object, it is displayed at the command line.</maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 3 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>add-content -path monthly.txt -value (get-content c:\rec1\weekly.txt) </dev:code>
+        <dev:remarks>
+          <maml:para>
+            This command adds the contents of the Weekly.txt file to the end of the Monthly.txt file. It uses the Get-Content cmdlet to get the contents of the Weekly.txt file and the Value parameter to pass the content of weekly.txt to Add-Content. The parentheses insure that the Get-Content command is complete before the add-content command begins.cls
+
+            You can also copy the content of Weekly.txt to a variable, such as $w, and then use the Value parameter to pass the variable to Add-Content. In that case, the command would be &quot;add-content -path monthly.txt -value $w&quot;.
+          </maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText></command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+     Link section  
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Get-Content</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Set-Content</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Clear-Content</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>Get-Item</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+      <maml:navigationLink>
+        <maml:linkText>about_namespace</maml:linkText>
+        <maml:uri/>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>

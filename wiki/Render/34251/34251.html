@@ -1,0 +1,64 @@
+<div class="wikidoc"><i>get all bindable events for all qualifying variables in the current scope</i><br /><pre>
+1# Get-EventBinding -IncludeUnboundEvents
+
+VariableName   EventName               TypeName          Listening
+------------   ---------               --------          ---------
+wc             Disposed                WebClient             False
+wc             DownloadDataCompleted   WebClient             False
+wc             DownloadFileCompleted   WebClient             False
+wc             DownloadProgressChanged WebClient             False
+wc             DownloadStringCompleted WebClient             False
+wc             OpenReadCompleted       WebClient             False
+wc             OpenWriteCompleted      WebClient             False
+wc             UploadDataCompleted     WebClient             False
+wc             UploadFileCompleted     WebClient             False
+wc             UploadProgressChanged   WebClient             False
+wc             UploadStringCompleted   WebClient             False
+wc             UploadValuesCompleted   WebClient             False
+dsTabExpansion Disposed                DataSet               False
+dsTabExpansion Initialized             DataSet               False
+dsTabExpansion MergeFailed             DataSet               False
+fsw            Changed                 FileSystemWatcher     False
+fsw            Created                 FileSystemWatcher     False
+fsw            Deleted                 FileSystemWatcher     False
+fsw            Disposed                FileSystemWatcher     False
+fsw            Error                   FileSystemWatcher     False
+fsw            Renamed                 FileSystemWatcher     False
+</pre><br /><i>listen for <b>all</b> events from a given variable, (verbosely) showing which events were bound</i><br /><pre>
+2# Get-EventBinding fsw -IncludeUnboundEvents | Connect-EventListener -Verbose
+VERBOSE: Target is a FileSystemWatcher
+VERBOSE: Now listening for &#39;Changed&#39; events from $fsw
+VERBOSE: Target is a FileSystemWatcher
+VERBOSE: Now listening for &#39;Created&#39; events from $fsw
+VERBOSE: Target is a FileSystemWatcher
+VERBOSE: Now listening for &#39;Deleted&#39; events from $fsw
+VERBOSE: Target is a FileSystemWatcher
+VERBOSE: Now listening for &#39;Disposed&#39; events from $fsw
+VERBOSE: Target is a FileSystemWatcher
+VERBOSE: Now listening for &#39;Error&#39; events from $fsw
+VERBOSE: Target is a FileSystemWatcher
+VERBOSE: Now listening for &#39;Renamed&#39; events from $fsw
+</pre><br /><i>show all currently bound variables and their events</i><br /><pre>
+3# Get-EventBinding
+
+VariableName EventName TypeName          Listening
+------------ --------- --------          ---------
+fsw          Changed   FileSystemWatcher      True
+fsw          Created   FileSystemWatcher      True
+fsw          Deleted   FileSystemWatcher      True
+fsw          Disposed  FileSystemWatcher      True
+fsw          Error     FileSystemWatcher      True
+fsw          Renamed   FileSystemWatcher      True
+</pre><br /><i>valid ways of attaching an event listener</i><br /><pre>
+#4 $var = (get-item variable:fsw)
+
+or
+
+#4 $var = (get-variable fsw)
+
+#5 $var | connect-eventlistener renamed
+
+or, passing the PSVariable itself (this lets you pass var references to functions)
+
+#5 connect-eventlistener $var renamed
+</pre></div><div class="ClearBoth"></div>

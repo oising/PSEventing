@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "48610",
+    "ThreadId": "14947",
+    "Html": "\r\ninstall.ps1 is not digitally signed<br />",
+    "PostedDate": "2007-09-10T09:38:04.073-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "48613",
+    "ThreadId": "14947",
+    "Html": "\r\nSet-ExecutionPolicy Unrestricted<br /><br />Can I put it back to RemoteSigned now?<br />",
+    "PostedDate": "2007-09-10T09:43:40.763-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "49668",
+    "ThreadId": "14947",
+    "Html": "\r\nYes, but alternatively you can \"unblock\" the downloaded ps1 script by right-clicking it, properties, then hitting the \"unblock\" button. All executable scripts downloaded are marked this way by IE (xp-sp2 and after) - even though the file is local, it is treated by powershell as \"remote\" until you unblock it.<br /><br />",
+    "PostedDate": "2007-09-17T12:11:52.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

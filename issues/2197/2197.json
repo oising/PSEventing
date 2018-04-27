@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2007-07-14T21:34:02.75-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The syntax:\n \n5# $var | connect-eventlistener renamed\n \nwhere $var is a PSVariable itself (e.g. not the value of the PSVariable) doesn't work -- broken parameter attribs, doh.",
+    "LastUpdatedDate": "2013-05-15T23:08:27.433-07:00",
+    "PlannedForRelease": "PSEventing 1.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "PSEventing",
+    "ReportedDate": "2007-05-10T09:30:01.673-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "piping a PSVariable into connect- or disconnect-eventlistener is broken",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 2197
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Moved from deleted structure PSEventing 0.51 Beta",
+      "PostedDate": "2007-07-14T20:15:06.393-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2007-07-14T21:32:10.67-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2007-07-14T21:34:02.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-13T16:37:00.17-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-15T23:08:27.433-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

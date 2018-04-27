@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "52765",
+    "ThreadId": "16284",
+    "Html": "\r\nHi There,<br /><br />I was thrilled to see that we could use .NET events in powershell. I've been working on a Exchange management console a few weeks ago, which I saw burn down in flames once I couldn't get treeview and propertygrid events working. I was ready to switch over to C# untill I found pseventing. <br /><br />Anyways. I registerered the dll, but the snapin is not found in the registered list.... Any ideas?<br /><br />Thanks,<br /><br />Mark<br /><br />---------------------------------------------------------------------<br />Beginning the Install phase of the installation.<br />See the contents of the log file for the C:\\Temp\\Gui\\Nivot.PowerShell.Eventing.dll assembly's progress.<br />The file is located at C:\\Temp\\Gui\\Nivot.PowerShell.Eventing.InstallLog.<br />Installing assembly 'C:\\Temp\\Gui\\Nivot.PowerShell.Eventing.dll'.<br />Affected parameters are:<br />   logtoconsole =<br />   assemblypath = C:\\Temp\\Gui\\Nivot.PowerShell.Eventing.dll<br />   logfile = C:\\Temp\\Gui\\Nivot.PowerShell.Eventing.InstallLog<br /><br />The Install phase completed successfully, and the Commit phase is beginning.<br />See the contents of the log file for the C:\\Temp\\Gui\\Nivot.PowerShell.Eventing.dll assembly's progress.<br />The file is located at C:\\Temp\\Gui\\Nivot.PowerShell.Eventing.InstallLog.<br />Committing assembly 'C:\\Temp\\Gui\\Nivot.PowerShell.Eventing.dll'.<br />Affected parameters are:<br />   logtoconsole =<br />   assemblypath = C:\\Temp\\Gui\\Nivot.PowerShell.Eventing.dll<br />   logfile = C:\\Temp\\Gui\\Nivot.PowerShell.Eventing.InstallLog<br /><br />The Commit phase completed successfully.<br /><br />The transacted install has completed.<br />PS C:\\Temp\\Gui&gt; Get-PSSnapin -Registered<br /><br /><br />Name        : Microsoft.Exchange.Management.PowerShell.Admin<br />PSVersion   : 1.0<br />Description : Admin Tasks for the Exchange Server<br /><br /><br />",
+    "PostedDate": "2007-10-10T22:58:37.23-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "52766",
+    "ThreadId": "16284",
+    "Html": "\r\nOk.... Found it... It is working/supported on a x64 version of Powershell it seems. <br />Any plans to get this working?<br /><br />Cheers,<br /><br />Mark<br />",
+    "PostedDate": "2007-10-10T23:10:33.93-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "52923",
+    "ThreadId": "16284",
+    "Html": "\r\nHi Mark,<br /><br />in order to see the snapin on a 64bit posh, you need to use the 64bit installutil.exe to register the snapin dll. From <a href=\"http://msdn2.microsoft.com/en-us/library/ms714644.aspx\" class=\"externalLink\">http://msdn2.microsoft.com/en-us/library/ms714644.aspx<span class=\"externalLinkIcon\" style=\"font-family:Consolas, Courier New, Courier, Monospace;\"></span></a><br /><br /><pre style=\"background-color:#ECECEC; border:dashed .1em #3E62A6; font-family:Consolas, Courier New, Courier, Monospace; font-size:1em; margin-top:0; padding:.5em; height:auto; overflow:auto; overflow-x:auto; overflow-y:auto;\">\r\nThe version of the InstallUtil program that you must use varies depending on whether you are installing on a 32-bit or 64-bit platform. \r\n \r\nTo install 32-bit registry information, use: %systemroot%\\Microsoft.NET\\Framework\\v2.0.50727\\installutil.exe.\r\n \r\nTo install 64-bit registry information, use: %systemroot%\\Microsoft.NET\\Framework64\\v2.0.50727\\installutil.exe.\r\n</pre><br />Hope this helps,<br /><br />- Oisin<br /><br />",
+    "PostedDate": "2007-10-11T15:34:58.84-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "52924",
+    "ThreadId": "16284",
+    "Html": "\r\nAlso, not wanting to burst your bubble, but you'll have a hard time hosting winforms objects in powershell without some considerable thought into avoiding STA issues. :-(<br />",
+    "PostedDate": "2007-10-11T15:42:23.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "52960",
+    "ThreadId": "16284",
+    "Html": "\r\nHi Oisin....<br /><br />Ahhh how could I forget. I had the same issue a while back. <br />I testdrived pseventing in the 32bit console and indeed did not find an easy way to use it in conjunction with Winforms. Luckely I was able to get the required functionality with the events exposed by powershell, namely the afterselect and click.<br /><br />Regards,<br /><br />Mark<br />",
+    "PostedDate": "2007-10-11T22:19:46.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

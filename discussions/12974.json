@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "42329",
+    "ThreadId": "12974",
+    "Html": "\r\nHello,<br /><br />The readme describes a couple other sample scripts:<br /><br />WMI.ps1<br />        An example script showing how to deal with WMI events using the <br />        standard .net delegate/event paradigm instead of the clunky <br />        \"WaitForNextEvent\" method.<br /><br />    WebClient.ps1<br />        An example script demonstrating multiple background downloads<br />        using System.Net.WebClient incorporating Write-Progress progress<br />        reporting, and Ctrl+C handling with clean-up.<br /><br />I have not been able to find them.  Could you send a link?<br /><br />Thanks,<br /><br />Bob<br />",
+    "PostedDate": "2007-07-24T11:38:57.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "42467",
+    "ThreadId": "12974",
+    "Html": "\r\nHi Rob,<br /><br />I haven't updated the WebClient script yet for this release, it's on the cards this week. As regards WMI,  Mow (aka the \"powershellguy\") wrote a piece on using PSEventing with WMI not so long ago -- check it out here: <a href=\"http://thepowershellguy.com/blogs/posh/archive/2007/05/09/powershell-eventing-library-pseventing-0-5-beta-released.aspx\" class=\"externalLink\">http://thepowershellguy.com/blogs/posh/archive/2007/05/09/powershell-eventing-library-pseventing-0-5-beta-released.aspx<span class=\"externalLinkIcon\" style=\"font-family:Consolas, Courier New, Courier, Monospace;\"></span></a><br /><br />This was written for 0.5, but the only differences are that the PSEVent object's Source property was a path to the variable, whereas in 1.0 it <i>is</i> the variable.<br /><br />- Oisin<br />",
+    "PostedDate": "2007-07-25T08:46:23.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

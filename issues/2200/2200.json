@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2007-07-14T21:34:11.813-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "...but in great \"never assume\" style, this is not always the case.",
+    "LastUpdatedDate": "2013-05-15T23:08:27.303-07:00",
+    "PlannedForRelease": "PSEventing 1.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "PSEventing",
+    "ReportedDate": "2007-05-10T10:44:00.51-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "BindVariableToEvent method assumed PSVariable .Value was always a PSObject",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 2200
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Moved from deleted structure PSEventing 0.51 Beta",
+      "PostedDate": "2007-07-14T20:15:06.393-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2007-07-14T21:32:57.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2007-07-14T21:34:11.813-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-13T16:36:59.823-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-15T23:08:27.303-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2007-07-14T21:34:20.923-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "...which clashes with Variable and VariableName parameter set.",
+    "LastUpdatedDate": "2013-05-15T23:08:27.15-07:00",
+    "PlannedForRelease": "PSEventing 1.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "PSEventing",
+    "ReportedDate": "2007-05-10T10:45:18.977-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "EventName parameter is erroneously set to ValueFromPipeline = true",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 2201
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Moved from deleted structure PSEventing 0.51 Beta",
+      "PostedDate": "2007-07-14T20:15:06.393-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2007-07-14T21:33:12.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2007-07-14T21:34:20.923-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-13T16:36:59.663-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-15T23:08:27.15-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

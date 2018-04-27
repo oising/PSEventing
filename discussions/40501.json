@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "134359",
+    "ThreadId": "40501",
+    "Html": "I am trying to detect when any of my event logs are full in a Powershell script is this the right tool for that?&nbsp; If this is the right tool what event of exception should I be looking for? <br>\r\n",
+    "PostedDate": "2008-11-21T13:40:59.81-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134913",
+    "ThreadId": "40501",
+    "Html": "this tool isn't for managing the event log per-se, but it could be used that way.<br>\r\n<br>\r\nMoW over at <a href=\"http://www.thepowershellguy.com/\">http://www.thepowershellguy.com/</a> has some examples of using this tool to watch for events in the eventlog using WMI events. If you watch for the event that gets written when an event log is full, you could trap this condition indirectly using this tool.<br>\r\n<br>\r\n-Oisin\r\n",
+    "PostedDate": "2008-11-24T14:11:27.36-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,100 @@
+﻿TOPIC
+    PowerShell Eventing Library (version 1.1 Beta)
+
+SHORT DESCRIPTION
+    Describes the Windows PowerShell Eventing (PSEventing) snapin and 
+    how to use the contained cmdlets and scripts that ship with PSEventing.
+
+LONG DESCRIPTION
+    PowerShell Eventing is a PowerShell Snapin that opens a new door for 
+    scripters into the powerful world of .NET events. Previously thought shut
+    tight given the nature of the command-line driven prompt, this library 
+    provides the tools to automatically capture events in real-time, but lets
+    you deal with them in your time. 
+    
+
+CMDLETS
+    The current PSEventing cmdlets are listed below:
+
+    Connect-Event
+        Allows PowerShell to sink events for a given .NET object. 
+        
+    Disconnect-Event
+        Disconnects one or more event sinks for a given .NET object. 
+        
+    New-Event
+        Create a custom PSEvent with an optional associated object payload. This 
+        can be used for inter-runspace communication, or simple notification 
+        inside a loop. 
+        
+    Read-Event
+        Retrieve one or more PSEvent objects representing tracked .NET events 
+        that have been raised since the last invocation of this command. 
+        
+    Get-EventBinding
+        Shows information about currently bound and/or unbound events on one or 
+        more .NET objects, accessible through PowerShell variables. 
+        
+    Get-EventQueue
+        Shows information about the default queue and/or named queues. 
+        
+    Start-KeyHandler
+        Allows PowerShell to transparently intercept keypresses and breaks 
+        (ctrl+c) converting them into PSEvent objects to be added to the queue. 
+        
+    Stop-KeyHandler
+        Stop all keypress handling activity. 
+        
+INCLUDED EXAMPLE SCRIPTS
+    FileSystemWatcher.ps1        
+        An example script showing how to watch and respond to events 
+        generated from the filesystem such as: changes, renames, updates,
+        deletes, etc. 
+        
+        PS> .\examples\filesystemwatcher.ps1
+    
+    WMI.ps1
+        An example script showing how to deal with WMI events using the 
+        standard .net delegate/event paradigm instead of the clunky 
+        "WaitForNextEvent" method.
+        
+    WebClient.ps1
+        An example script demonstrating multiple background downloads
+        using System.Net.WebClient incorporating Write-Progress progress
+        reporting, and Ctrl+C handling with clean-up.
+
+FEEDBACK
+    Please submit any feedback, including defects and enhancement requests, 
+    to either the discussions forums at:
+
+    http://www.codeplex.com/PSEventing/Thread/List.aspx
+
+    or via the Issue Tracker at:
+
+    http://www.codeplex.com/PSEventing/WorkItem/List.aspx
+
+AUTHOR
+    Oisin Grehan is a 33 year old Irish-born programmer, living in Montreal,
+    Canada. He can be contacted at:
+    
+    oising@gmail.com
+    
+    He posts random gibber to his blog at http://www.nivot.org/ and can be
+    occasionally found dawdling on #powershell on irc.freenode.net.
+           
+SEE ALSO
+    For other projects the author is involved in, see:
+    
+    PowerShell Community Extensions (PSCX)
+    http://www.codeplex.com/PowerShellCX
+    
+    PowerShell SharePoint Provider
+    http://www.codeplex.com/PSSharePoint
+
+THANKS & SHOUT OUTS
+    To Keith Hill, coordinator of the PSCX project, without whom this help
+    would not have been so easy to generate ;)
+    
+    To mow, xaegrr, klumsy, frb, rfoust, jtruher, gaurhoth, k5wtf and others on
+    freenode's #powershell IRC channel; come join us there, and waste away the day!
+      

@@ -1,0 +1,1 @@
+﻿@copy $(OutDir)\*.* ..\..\Src\Help\

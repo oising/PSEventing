@@ -1,0 +1,99 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9CD87BE2-8949-49FA-BDEC-1D5805EEAE00}"
+	ProjectSection(SolutionItems) = preProject
+		notes.txt = notes.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Releases", "Releases", "{94264046-CE70-4BEF-BA67-3AF80CF6DEF0}"
+	ProjectSection(SolutionItems) = preProject
+		Src\bin\Release\Nivot.PowerShell.Eventing-0.5.2686.15173.zip = Src\bin\Release\Nivot.PowerShell.Eventing-0.5.2686.15173.zip
+		Src\bin\Release\Nivot.PowerShell.Eventing-1.0.2752.37836.zip = Src\bin\Release\Nivot.PowerShell.Eventing-1.0.2752.37836.zip
+		Src\bin\Release\Nivot.PowerShell.Eventing-1.0.2760.36525.zip = Src\bin\Release\Nivot.PowerShell.Eventing-1.0.2760.36525.zip
+		Src\bin\Nivot.PowerShell.Eventing-1.0.2768.17386-DEBUG.zip = Src\bin\Nivot.PowerShell.Eventing-1.0.2768.17386-DEBUG.zip
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSEventing", "Src\PSEventing.csproj", "{4D53430D-F23E-4661-963E-E6B406B87906}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSEventingHelp", "HelpGen\PSEventingHelp.csproj", "{5FC267A9-D477-41B9-B2AA-BF4A1A029940}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Installer", "Installer\Installer.wixproj", "{AE7A1A1E-EBDC-4DCD-ABC3-DF0945317915}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSEventingPlus", "PSEventingPlus\PSEventingPlus.csproj", "{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs02
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = HelpGen\\PSEventingHelp.csproj
+		SccProjectName1 = HelpGen
+		SccLocalPath1 = HelpGen
+		SccProjectUniqueName2 = Src\\PSEventing.csproj
+		SccProjectName2 = Src
+		SccLocalPath2 = Src
+		SccProjectUniqueName3 = Installer\\Installer.wixproj
+		SccProjectName3 = Installer
+		SccLocalPath3 = Installer
+		SccProjectUniqueName4 = PSEventingPlus\\PSEventingPlus.csproj
+		SccProjectName4 = PSEventingPlus
+		SccLocalPath4 = PSEventingPlus
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D53430D-F23E-4661-963E-E6B406B87906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D53430D-F23E-4661-963E-E6B406B87906}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D53430D-F23E-4661-963E-E6B406B87906}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4D53430D-F23E-4661-963E-E6B406B87906}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4D53430D-F23E-4661-963E-E6B406B87906}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4D53430D-F23E-4661-963E-E6B406B87906}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D53430D-F23E-4661-963E-E6B406B87906}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D53430D-F23E-4661-963E-E6B406B87906}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4D53430D-F23E-4661-963E-E6B406B87906}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4D53430D-F23E-4661-963E-E6B406B87906}.Release|x86.ActiveCfg = Release|Any CPU
+		{5FC267A9-D477-41B9-B2AA-BF4A1A029940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FC267A9-D477-41B9-B2AA-BF4A1A029940}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5FC267A9-D477-41B9-B2AA-BF4A1A029940}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5FC267A9-D477-41B9-B2AA-BF4A1A029940}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5FC267A9-D477-41B9-B2AA-BF4A1A029940}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FC267A9-D477-41B9-B2AA-BF4A1A029940}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{5FC267A9-D477-41B9-B2AA-BF4A1A029940}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5FC267A9-D477-41B9-B2AA-BF4A1A029940}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5FC267A9-D477-41B9-B2AA-BF4A1A029940}.Release|x86.ActiveCfg = Debug|Any CPU
+		{AE7A1A1E-EBDC-4DCD-ABC3-DF0945317915}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{AE7A1A1E-EBDC-4DCD-ABC3-DF0945317915}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{AE7A1A1E-EBDC-4DCD-ABC3-DF0945317915}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{AE7A1A1E-EBDC-4DCD-ABC3-DF0945317915}.Debug|x86.ActiveCfg = Debug|x86
+		{AE7A1A1E-EBDC-4DCD-ABC3-DF0945317915}.Debug|x86.Build.0 = Debug|x86
+		{AE7A1A1E-EBDC-4DCD-ABC3-DF0945317915}.Release|Any CPU.ActiveCfg = Release|x86
+		{AE7A1A1E-EBDC-4DCD-ABC3-DF0945317915}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{AE7A1A1E-EBDC-4DCD-ABC3-DF0945317915}.Release|Mixed Platforms.Build.0 = Release|x86
+		{AE7A1A1E-EBDC-4DCD-ABC3-DF0945317915}.Release|x86.ActiveCfg = Release|x86
+		{AE7A1A1E-EBDC-4DCD-ABC3-DF0945317915}.Release|x86.Build.0 = Release|x86
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2BE1DF95-9AD5-4338-A880-0B0DEE0FFF0C}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{94264046-CE70-4BEF-BA67-3AF80CF6DEF0} = {9CD87BE2-8949-49FA-BDEC-1D5805EEAE00}
+	EndGlobalSection
+EndGlobal
